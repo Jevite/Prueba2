@@ -16,31 +16,6 @@ function App(props) {
     user: undefined,
   });
 
-  useEffect(() => {
-    const checkLogged = async () => {
-      let token = localStorage.getItem("auth-token");
-      if (token === null) {
-        localStorage.setItem("auth-token", "");
-        token = "";
-      }
-
-      const tokenR = await Axios.post(
-        "http://ec2-18-218-144-116.us-east-2.compute.amazonaws.com/users/login/users/tokenIsValid",
-        null,
-        { headers: { "x-auth-token": token } }
-      );
-      if (tokenR.data) {
-        const userRes = await Axios.get("http://ec2-18-218-144-116.us-east-2.compute.amazonaws.com/users/login/users/", {
-          headers: { "x-auth-token": token },
-        });
-        setUserData({
-          token,
-          user: userRes.data,
-        });
-      }
-    };
-    checkLogged();
-  }, []);
 
   return (
     <UserContext.Provider value={{ userData, setUserData }}>
