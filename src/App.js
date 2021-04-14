@@ -19,10 +19,9 @@ function App(props) {
 
   return (
     <UserContext.Provider value={{ userData, setUserData }}>
-      Holaaaa
       <div>
         <CssBaseline />
-        <Router>
+        <Router basename="Medicine">
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/registro" component={Register} />
