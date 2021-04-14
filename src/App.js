@@ -25,12 +25,12 @@ function App(props) {
       }
 
       const tokenR = await Axios.post(
-        "http://localhost:3001/users/tokenIsValid",
+        "http://ec2-18-218-144-116.us-east-2.compute.amazonaws.com/users/login/users/tokenIsValid",
         null,
         { headers: { "x-auth-token": token } }
       );
       if (tokenR.data) {
-        const userRes = await Axios.get("http://localhost:3001/users/", {
+        const userRes = await Axios.get("http://ec2-18-218-144-116.us-east-2.compute.amazonaws.com/users/login/users/", {
           headers: { "x-auth-token": token },
         });
         setUserData({
